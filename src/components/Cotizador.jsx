@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast, ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import CountUp from "react-countup";
 
 function Cotizador() {
   // Estados para controlar los factores de marca, tipo y año
@@ -118,7 +119,7 @@ function Cotizador() {
   return (
     <div className="container cotizador">
       <ToastContainer />
-      <div className="card text-center mt-5 p-5">
+      <div className="card text-center mt-5 py-5 px-4">
         <h1>COTIZADOR DE SEGUROS</h1>
         <Selector
           label="Marca"
@@ -149,10 +150,16 @@ function Cotizador() {
           Cotizar
         </button>
         {cotizado ? (
-          <div className="py-4 d-flex flex-column text-center">
+          <div className="pt-4 d-flex flex-column text-center">
             <h2 className="fs-5">Precio del seguro: </h2>
             <h1>
-              <strong>${seguroPrecio}</strong>
+              <CountUp start={0} end={seguroPrecio} duration={1} prefix="$">
+                {({ countUpRef }) => (
+                  <div className="pb-4">
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
             </h1>
             <button className="btn" onClick={guardarCotizacion}>
               Guardar en historial

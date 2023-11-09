@@ -1,23 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Historial from "./pages/Historial";
 import Welcome from "./components/Welcome";
-import Cotizador from './components/Cotizador';
+import Cotizador from "./components/Cotizador";
 
-function App () {
+function App() {
   return (
     <div>
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}>
-          <Route path="historial" element={<Historial />} />
-          <Route path="cotizador" element={<Cotizador/>}
-          />
-       </Route>
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route path="historial" element={<Historial />} />
+            <Route path="cotizador" element={<Cotizador />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
 export default App;
